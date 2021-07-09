@@ -1,1 +1,1 @@
-web: gunicorn echofrag_epifitas.wsgi --log-file -
+web: gunicorn ecofrag_epifitas.wsgi --log-file -
