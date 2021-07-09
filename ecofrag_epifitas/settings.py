@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'apps.pages',
 
     # thirty party
-    'allauth'
+    'allauth',
+    'allauth.account',
     
     'django.contrib.sites',
     'django.contrib.admin',
