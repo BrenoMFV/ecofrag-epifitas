@@ -15,6 +15,7 @@ class Especie(models.Model):
     epiteto = models.CharField(max_length=220)
     familia = models.CharField(max_length=220)
     link_flora = models.CharField(max_length=220)
+    adicionada_em = models.DateTimeField(auto_now_add=True)
     ativa = models.BooleanField(default=True)
 
     class Meta:
@@ -30,7 +31,7 @@ class Especie(models.Model):
 
 
 class InfoGeografica(models.Model):
-    especie = models.ForeignKey(Especie, on_delete=models.CASCADE)
+    especie = models.OneToOneField(Especie, on_delete=models.CASCADE)
     numero_registros = models.IntegerField()
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
@@ -51,7 +52,7 @@ class InfoReproducao(models.Model):
         ('XENO', 'Xenogamia'),
         ('HERCO', 'Hercogamia'),
     ]
-    especie = models.ForeignKey(Especie, on_delete=models.CASCADE)
+    especie = models.OneToOneField(Especie, on_delete=models.CASCADE)
     flor = models.CharField(max_length=220)
     info_flor = models.TextField()
     fruto = models.CharField(max_length=220)
@@ -73,7 +74,7 @@ class InfoReproducao(models.Model):
 
 
 class Foto(models.Model):
-    especie = models.ForeignKey(Especie, on_delete=models.CASCADE)
+    especie = models.OneToOneField(Especie, on_delete=models.CASCADE)
     planta = models.ImageField(upload_to='plantas/', blank=True, null=True)
     fruto = models.ImageField(upload_to='frutos/', blank=True, null=True)
     flor = models.ImageField(upload_to='flores/', blank=True, null=True)
