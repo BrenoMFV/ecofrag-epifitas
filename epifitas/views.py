@@ -23,7 +23,7 @@ class GenericSearchResultsView(ListView):
     template_name = 'epifitas/generic_search_results.html'
 
     def get_queryset(self):
-        query = elf.request.GET.get('q')
+        query = self.request.GET.get('q')
         return Especie.objects.filter(
             Q(sinonimia__icontains=query) |
             Q(genero__icontains=query) |
