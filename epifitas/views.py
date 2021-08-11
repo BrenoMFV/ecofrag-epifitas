@@ -8,7 +8,7 @@ from .models import Especie
 class EpifitasListView(ListView):
     model = Especie
     template_name = 'epifitas/epifitas_list.html'
-    paginate_by = 15
+    paginate_by = 30
     # ordering = Especie.sinonimia
 
 
