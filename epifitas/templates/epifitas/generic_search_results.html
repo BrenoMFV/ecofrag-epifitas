@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Pesquisa (conteúdo)
+{% endblock %}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Sinonimia</th>
+        <th scope="col">Gênero</th>
+        <th scope="col">Epíteto</th>
+        <th scope="col">Família</th>
+        <th scope="col">Adicionada em...</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if especies_list %}
+    {% for especie in especies_list %}
+    <tr>
+        <th scope="row"><a href="{{ especie.get_absolute_url }} ">{{ especie.sinonimia }}</a></th>
+        <td>{{ especie.genero }}</td>
+        <td>{{ especie.epiteto }}</td>
+        <td>{{ especie.familia }}</td>
+        <td>{{ especie.adicionada_em }}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <th scope="row" colspan="5" style="text-align: center;">Nenhum resultado encontrado</th>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+{% endblock%}

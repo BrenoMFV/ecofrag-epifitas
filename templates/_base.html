@@ -45,10 +45,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">Sobre nós</a>
             </li>
-
+            <li class="nav-item">
+                <a href="{% url 'admin:index' %}" class="nav-link">Login</a>
+            </li>
         </ul>
         <form method='GET' action="{% url 'generic_search_results' %}" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisa simples" aria-label="Search">
+            <input name='q' class="form-control mr-sm-2" type="search"
+                   placeholder="Pesquisa simples" aria-label="Search" required>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
     </div>

@@ -27,10 +27,10 @@ class GenericSearchResultsView(ListView):
         return Especie.objects.filter(
             Q(sinonimia__icontains=query) |
             Q(genero__icontains=query) |
-            Q(flor__icontains=query) |
-            Q(fruto__icontains=query) |
-            Q(antese__icontains=query) |
-            Q(tipo_reproducao__icontains=query) |
-            Q(semente__icontains=query) |
-            Q(recursos_oferecidos__icontains=query)
+            Q(inforeproducao__flor__icontains=query) |
+            Q(inforeproducao__fruto__icontains=query) |
+            Q(inforeproducao__antese__icontains=query) |
+            Q(inforeproducao__tipo_reproducao__icontains=query) |
+            Q(inforeproducao__semente__icontains=query) |
+            Q(inforeproducao__recursos_oferecidos__icontains=query)
         ).distinct().prefetch_related()
