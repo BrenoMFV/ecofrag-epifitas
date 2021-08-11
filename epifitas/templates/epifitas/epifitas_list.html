@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Lista de Epífitas
+{% endblock %}
+
+{% block content %}
+<div class="table-responsive-lg">
+    <table class="table table-hover table-striped">
+        <caption>Acervo de Epífitas</caption>
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sinonímia</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Epiteto</th>
+            <th scope="col">Familia</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for especie in object_list %}
+        <tr>
+            <th scope="row"><a href="{{ especie.get_absolute_url }}">{{ especie.sinonimia }}</a></th>
+            <td>{{ especie.genero }}</td>
+            <td>{{ especie.familia }}</td>
+            <td>{{ especie.epiteto }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

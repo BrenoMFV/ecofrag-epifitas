@@ -1,5 +1,8 @@
 from django.urls import path
 
+from .views import EpifitasListView, EpifitaDetailView
+
 urlpatterns = [
-    path('signup/', SignupPageView.as_view(), name='signup'),
+    path('list-all/', EpifitasListView.as_view(), name='epifitas_list'),
+    path('<uuid:pk>/', EpifitaDetailView.as_view(), name='epifita_detail'),
 ]
