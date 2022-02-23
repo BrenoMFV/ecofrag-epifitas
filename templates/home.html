@@ -4,10 +4,15 @@
 Ecofrag-Epífitas
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css">
+{% endblock %}
+
+
 {% block content %}
 <h1 style='text-align: center;'>Ecofrag-Epífitas</h1>
 <hr>
-<table class="table table-bordered">
+<table class="table table-bordered" id="epifitasTable">
     <thead>
     <tr>
         <th scope="col">Sinonimia</th>
@@ -25,7 +30,7 @@ Ecofrag-Epífitas
         <td>{{ especie.genero }}</td>
         <td>{{ especie.epiteto }}</td>
         <td>{{ especie.familia }}</td>
-        <td>{{ especie.adicionada_em }}</td>
+        <td>{{ especie.adicionada_em|date:"d/m/y H:i"}}</td>
     </tr>
     {% endfor %}
     {% else %}
@@ -36,4 +41,15 @@ Ecofrag-Epífitas
     </tbody>
 </table>
 
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.11.2/sorting/datetime-moment.js"></script>
+<script>
+$(document).ready(function() {
+    $.fn.dataTable.moment('DD/MM/YY HH:mm');
+    $('#epifitasTable').DataTable();
+} );
+</script>
 {% endblock %}
